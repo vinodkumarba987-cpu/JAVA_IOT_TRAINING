@@ -1,6 +1,6 @@
 package day_0HW;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class ATM {
 
