@@ -1,6 +1,6 @@
-package day_0HW;
+package day_01HW;
 
-import java.util.*;
+import java.util.Scanner;
 
 public class ATM {
 
@@ -17,10 +17,22 @@ public class ATM {
             System.out.print("Enter your name: ");
             name = sc.nextLine();
 
-            System.out.print("Enter your age: ");
-            age = sc.nextInt();
-            sc.nextLine();
+            // Age validation
+            while (true) {
 
+                System.out.print("Enter your age: ");
+                age = sc.nextInt();
+                sc.nextLine();
+
+                if (age > 18 && age < 60) {
+                    break;
+                }
+                else {
+                    System.out.println("Invalid age. Age must be more than 18 and less than 60. Try again.");
+                }
+            }
+
+            // Designation validation
             while (true) {
 
                 System.out.print("Enter your designation: ");
@@ -37,15 +49,15 @@ public class ATM {
                         System.out.println("Invalid designation. Try again.");
                         continue;
                 }
-
                 break;
             }
-
+            // Display account details
             System.out.println("\n----- Account Details -----");
             System.out.println("Name: " + name);
             System.out.println("Age: " + age);
             System.out.println("Designation: " + designation);
 
+            // Confirmation
             System.out.print("\nDo you want to change the details? (Y/N): ");
             char choice = sc.next().charAt(0);
             sc.nextLine();
@@ -58,12 +70,6 @@ public class ATM {
                 break;
             }
         }
-    }
-    void display(){
-            System.out.println("\n----- Account Details -----");
-            System.out.println("Name: " + name);
-            System.out.println("Age: " + age);
-            System.out.println("Designation: " + designation);
     }
 
     public static void main(String[] args) {
@@ -91,12 +97,11 @@ public class ATM {
                     break;
 
                 case 2:
-                    atm.display();
-                    System.out.println("Display - To-do");
+                    System.out.println("Display - Coming soon");
                     break;
 
                 case 3:
-                    System.out.println("Withdraw/Deposit - To-do");
+                    System.out.println("Withdraw/Deposit - Coming soon");
                     break;
 
                 case 4:

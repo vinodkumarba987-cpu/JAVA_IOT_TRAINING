@@ -4,7 +4,7 @@ public class encap {
 
 	void m1(int b) {
 		System.out.println("dfasdf "+b);
-		System.out.println("dfasdf "+a);
+		System.out.println("dfasdf "+this.a);
 	}
 
 	public static void main(String[] args) {
