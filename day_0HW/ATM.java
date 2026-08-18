@@ -59,6 +59,12 @@ public class ATM {
             }
         }
     }
+    void display(){
+            System.out.println("\n----- Account Details -----");
+            System.out.println("Name: " + name);
+            System.out.println("Age: " + age);
+            System.out.println("Designation: " + designation);
+    }
 
     public static void main(String[] args) {
 
@@ -85,6 +91,7 @@ public class ATM {
                     break;
 
                 case 2:
+                    atm.display();
                     System.out.println("Display - To-do");
                     break;
 
