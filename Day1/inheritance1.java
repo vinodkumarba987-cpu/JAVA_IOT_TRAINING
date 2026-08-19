@@ -9,7 +9,6 @@ class Parent
 		System.out.println(" Line 2");
 	}
 }
-
 public class inheritance1 extends Parent{
 
 	public static void main(String[] args) {
