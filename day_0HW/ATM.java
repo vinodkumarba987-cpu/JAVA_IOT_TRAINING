@@ -11,13 +11,9 @@ public class ATM {
     void createAccount() {
 
         Scanner sc = new Scanner(System.in);
-
         while (true) {
-
             System.out.print("Enter your name: ");
             name = sc.nextLine();
-
-            // Age validation
             while (true) {
 
                 System.out.print("Enter your age: ");
@@ -32,7 +28,6 @@ public class ATM {
                 }
             }
 
-            // Designation validation
             while (true) {
 
                 System.out.print("Enter your designation: ");
@@ -51,13 +46,6 @@ public class ATM {
                 }
                 break;
             }
-            // Display account details
-            System.out.println("\n----- Account Details -----");
-            System.out.println("Name: " + name);
-            System.out.println("Age: " + age);
-            System.out.println("Designation: " + designation);
-
-            // Confirmation
             System.out.print("\nDo you want to change the details? (Y/N): ");
             char choice = sc.next().charAt(0);
             sc.nextLine();
@@ -70,8 +58,12 @@ public class ATM {
                 break;
             }
         }
-    }
-
+    }void display(){
+            System.out.println("\n----- Account Details -----");
+            System.out.println("Name: " + name);
+            System.out.println("Age: " + age);
+            System.out.println("Designation: " + designation);
+}
     public static void main(String[] args) {
 
         ATM atm = new ATM();
@@ -97,11 +89,12 @@ public class ATM {
                     break;
 
                 case 2:
-                    System.out.println("Display - Coming soon");
+                    atm.display();
+                   // System.out.println("Display - Coming soon");
                     break;
 
                 case 3:
-                    System.out.println("Withdraw/Deposit - Coming soon");
+                  //  System.out.println("Withdraw/Deposit - Coming soon");
                     break;
 
                 case 4:

@@ -2,140 +2,121 @@ import java.util.Scanner;
 
 public class ATM {
 
-    String name;
-    int age;
-    String designation;
-    double salary;
-    boolean accountCreated = false; // To check if account exists
+    private String name;
+    private int age;
+    private String designation;
+    private double salary;
+    private boolean accountCreated = false; // Tracks if account exists
 
-    Scanner sc = new Scanner(System.in);
+    private final Scanner sc = new Scanner(System.in);
 
-    // Create account method
+    // Method to create a new account with Y/N confirmation
     void createAccount() {
-        System.out.print("Enter your name: ");
-        name = sc.nextLine().trim();
-
-        // Age validation
         while (true) {
-            System.out.print("Enter your age: ");
-            if (sc.hasNextInt()) {
-                age = sc.nextInt();
-                sc.nextLine(); // consume newline
-                if (age > 18 && age < 60) {
-                    break;
+            System.out.print("Enter your name: ");
+            name = sc.nextLine().trim();
+
+            // Age validation loop
+            while (true) {
+                System.out.print("Enter your age (19-59): ");
+                if (sc.hasNextInt()) {
+                    age = sc.nextInt();
+                    sc.nextLine(); // consume newline
+                    if (age >= 19 && age <= 59) {
+                        break;
+                    } else {
+                        System.out.println("❌ Age must be between 19 and 59. Try again.");
+                    }
                 } else {
-                    System.out.println("Invalid age. Age must be more than 18 and less than 60. Try again.");
+                    System.out.println("❌ Invalid input. Please enter a valid number for age.");
+                    sc.nextLine(); // clear invalid input
                 }
-            } else {
-                System.out.println("Invalid input. Please enter a valid number for age.");
-                sc.nextLine(); // clear invalid input
             }
-        }
 
-        // Designation validation + Salary assignment
-        while (true) {
-            System.out.print("Enter your designation (Programmer / Manager / Tester): ");
-            designation = sc.nextLine().trim();
+            // Designation validation + Salary assignment
+            while (true) {
+                System.out.print("Enter your designation (Programmer / Manager / Tester): ");
+                designation = sc.nextLine().trim();
 
-            switch (designation) {
-                case "Programmer":
+                if (designation.equalsIgnoreCase("Programmer")) {
                     salary = 20000;
-                    break;
-                case "Manager":
+                } else if (designation.equalsIgnoreCase("Manager")) {
                     salary = 25000;
-                    break;
-                case "Tester":
+                } else if (designation.equalsIgnoreCase("Tester")) {
                     salary = 15000;
-                    break;
-                default:
-                    System.out.println("Invalid designation. Try again.");
+                } else {
+                    System.out.println("❌ Invalid designation. Please choose from Programmer, Manager, or Tester.");
                     continue;
+                }
+                break;
             }
-            break;
-        }
 
-        accountCreated = true;
-        System.out.println("\nAccount created successfully!\n");
+            // Ask if user wants to re-enter details
+            System.out.print("Do you want to re-enter details? (y/n): ");
+            String choice = sc.nextLine().trim().toLowerCase();
+
+            if (choice.equals("y")) {
+                System.out.println("\n🔄 Restarting account creation...\n");
+                continue; // restart loop
+            } else if (choice.equals("n")) {
+                accountCreated = true;
+                System.out.println("\n✅ Account created successfully!\n");
+                break; // exit loop
+            } else {
+                System.out.println("⚠ Invalid choice. Assuming 'n'.");
+                accountCreated = true;
+                System.out.println("\n✅ Account created successfully!\n");
+                break;
+            }
+        }
     }
 
-    // Display account details
+    // Method to display account details
     void displayAccount() {
         if (!accountCreated) {
-            System.out.println("No account found. Please create an account first.\n");
+            System.out.println("⚠ No account found. Please create an account first.\n");
             return;
         }
-        System.out.println("\n----- Account Details -----");
-        System.out.println("Name       : " + name);
-        System.out.println("Age        : " + age);
-        System.out.println("Salary     : $" + salary);
-        System.out.println("Designation: " + designation);
-        System.out.println("---------------------------\n");
+
+        System.out.println("\n--- Account Details ---");
+        System.out.printf("Name       : %s%n", name);
+        System.out.printf("Age        : %d%n", age);
+        System.out.printf("Designation: %s%n", designation);
+        System.out.printf("Salary     : %.2f%n", salary);
+        System.out.println("-----------------------\n");
     }
 
-    // Raise salary method (simple version)
-    void raiseSalary() {
-        if (!accountCreated) {
-            System.out.println("No account found. Please create an account first.\n");
-            return;
-        }
-        System.out.print("Enter raise amount: ");
-        if (sc.hasNextDouble()) {
-            double raise = sc.nextDouble();
-            sc.nextLine(); // consume newline
-            if (raise > 0) {
-                salary += raise;
-                System.out.println("Salary raised successfully! New Salary: $" + salary + "\n");
-            } else {
-                System.out.println("Raise amount must be positive.\n");
-            }
-        } else {
-            System.out.println("Invalid input. Please enter a number.\n");
-            sc.nextLine(); // clear invalid input
-        }
-    }
+    // Main menu
+    public static void main(String[] args) {
+        ATM atm = new ATM();
+        Scanner sc = new Scanner(System.in);
 
-    // Menu method
-    void menu() {
         while (true) {
             System.out.println("===== ATM Menu =====");
             System.out.println("1. Create Account");
             System.out.println("2. Display Account");
-            System.out.println("3. Raise Salary");
-            System.out.println("4. Exit");
+            System.out.println("3. Exit");
             System.out.print("Enter your choice: ");
 
-            int choice;
-            if (sc.hasNextInt()) {
-                choice = sc.nextInt();
-                sc.nextLine(); // consume newline
-            } else {
-                System.out.println("Invalid input. Please enter a number.\n");
+            if (!sc.hasNextInt()) {
+                System.out.println("❌ Invalid input! Please enter a number.\n");
                 sc.nextLine();
                 continue;
             }
 
+            int choice = sc.nextInt();
+            sc.nextLine(); // consume newline
+
             switch (choice) {
-                case 1:
-                    createAccount();
-                    break;
-                case 2:
-                    displayAccount();
-                    break;
-                case 3:
-                    raiseSalary();
-                    break;
-                case 4:
-                    System.out.println("Exiting... Goodbye!");
+                case 1 -> atm.createAccount();
+                case 2 -> atm.displayAccount();
+                case 3 -> {
+                    System.out.println("👋 Thank you for using the ATM system!");
                     sc.close();
                     return;
-                default:
-                    System.out.println("Invalid choice. Try again.\n");
+                }
+                default -> System.out.println("❌ Invalid choice! Please try again.\n");
             }
         }
-    }
-
-    public static void main(String[] args) {
-        ATM atm = new ATM();
-        atm.menu();
     }
 }
