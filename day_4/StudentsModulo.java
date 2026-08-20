@@ -13,3 +13,4 @@ public class StudentsModulo {
         System.out.println("Students left without a full row: " + remainingStudents);
     }
 }
+//simmple program to display all even numbers from 1 to 20
