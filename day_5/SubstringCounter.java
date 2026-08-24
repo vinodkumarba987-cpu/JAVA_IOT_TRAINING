@@ -8,7 +8,6 @@ public class SubstringCounter {
         System.out.println("The substrings are:");
         for (int i = 0; i < str.length(); i++) {
             for (int j = i + 1; j <= str.length(); j++) {
-                // Extract the substring from index i to j-1
                 String sub = str.substring(i, j);
                 System.out.println(sub);
                 count++;
@@ -18,3 +17,11 @@ public class SubstringCounter {
         System.out.println("\nTotal number of substrings made: " + count);
     }
 }
+
+
+
+/* Outer loop picks the starting character index
+        for (int i = 0; i < str.length(); i++) {
+            // Inner loop picks the ending character index
+            for (int j = i + 1; j <= str.length(); j++) {
+                // Extract the substring from index i to j-1*/
