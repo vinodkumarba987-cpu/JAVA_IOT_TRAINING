@@ -21,6 +21,12 @@ public class NaivePatternMatching {
             if (j == patternLength) {
                 System.out.println("Pattern found at index: " + i);
             }
-        }
+            else if (j!=patternLength){
+                System.out.println("Pattern not found ! ");
+                break;
+            }
     }
+            
+        }
+        
 }
