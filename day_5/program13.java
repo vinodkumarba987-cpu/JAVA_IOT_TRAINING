@@ -1,4 +1,4 @@
-public class program12{
+public class program13{
     public static void main(String[] args) {
         String s1 ="Hello";
         String s2= s1;
