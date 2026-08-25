@@ -16,10 +16,9 @@ public class StringBuilderDemo {
 
         sb.delete(2, 7);
         System.out.println("Delete   : " + sb);
-
-        sb.reverse();
+        
+         sb.reverse();
         System.out.println("Reverse  : " + sb);
-
         System.out.println("Length   : " + sb.length());
         System.out.println("Character: " + sb.charAt(2));
     }

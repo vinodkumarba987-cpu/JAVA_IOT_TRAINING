@@ -12,7 +12,7 @@ public class highest_profit {
             prefixSum[i] = prefixSum[i - 1] + expenses[i];
 
         int max = prefixSum[2];
-        int start = 0;
+        int start = 0; 
 
         for (int i = 3; i < expenses.length; i++) {
 
