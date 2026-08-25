@@ -2,7 +2,6 @@
 import java.util.HashSet;
 public class HashsetDemo1 {
     public static void main(String[] args) {
-        // sor
         HashSet v=new HashSet();
         System.out.println("Initial size of hashset : "+v.size());
         System.out.println("Hash set is empty : "+v.isEmpty());
@@ -25,5 +24,6 @@ public class HashsetDemo1 {
         System.out.println("Contents after deletion : "+v);
         v.clear();
         System.out.println("Size of Hashset after clearing : "+v.size());
+        System.out.println(v.isEmpty());
     }
 }
