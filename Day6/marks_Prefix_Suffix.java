@@ -17,4 +17,3 @@ public class marks_Prefix_Suffix {
         System.out.println("Total score:" + sum);
     }
 }
-//who is givinng highest profit {subarray -3 only max limit}
