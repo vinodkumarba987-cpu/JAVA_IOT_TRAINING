@@ -17,7 +17,7 @@ public class binary_search{
         return -1;
     }
     public static void main(String[] args) {
-        int[] arr = {10, 20, 30, 40, 50, 60, 70, 80};
+        int[] arr = {10, 20, 30, 40, 50, 60,60, 70, 80};
         int key = 60;
         int result = binarySearch(arr, key);
         if (result != -1)
