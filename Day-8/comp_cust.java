@@ -16,17 +16,17 @@ class Employee{
 	}
 }
 
-public class custom_comparator {
+public class comp_cust {
 	public static void main(String[] args) {
 		
 		List<Employee>employees=Arrays.asList(
-				new Employee("Ravi","IT",90000),
-				new Employee("abhi","HR",80000),
-				new Employee("babbi","tester",70000),
-				new Employee("priya","AT",50000)
+				new Employee("Arya","IT",90000),
+				new Employee("Ajay","HR",80000),
+				new Employee("Vijay","tester",70000),
+				new Employee("Vinod","AT",50000)
 				);
 		employees.sort(
-				Comparator.comparing((Employee e) -> e.department).thenComparing((Employee e) -> e.salary,Comparator.reverseOrder()).thenComparing(e -> e.name));
+				Comparator.comparing((Employee e) -> e.salary).thenComparing((Employee e) -> e.salary,Comparator.reverseOrder()).thenComparing(e -> e.name));
 		for(Employee e:employees) {
 			System.out.println(e);
 		}
