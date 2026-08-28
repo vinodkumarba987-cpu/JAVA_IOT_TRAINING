@@ -1,9 +1,7 @@
 public class bin_search_repeated {
     public static void main(String[] args) {
-
         int[] arr = {60, 20, 20, 20, 30, 26,70, 90};
         int key = 20;
-
         int left = 0;
         int right = arr.length - 1;
         int first = -1;

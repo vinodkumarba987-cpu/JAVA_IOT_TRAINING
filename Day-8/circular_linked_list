@@ -1,0 +1,38 @@
+public class circular_linked_list {
+
+    static class Node {
+
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    public static void main(String[] args) {
+
+        Node first = new Node(10);
+        Node second = new Node(20);
+        Node third = new Node(30);
+
+        first.next = second;
+        second.next = third;
+
+        // Last node points back to first node
+        third.next = first;
+
+        Node temp = first;
+
+        do {
+
+            System.out.print(temp.data + " -> ");
+
+            temp = temp.next;
+
+        } while (temp != first);
+
+        System.out.println("(back to first)");
+    }
+}
