@@ -25,9 +25,21 @@ public class ATM {
     // 1. Create Account
     void createAccount() {
 
-        System.out.print("Enter your name: ");
-        String name = sc.nextLine();
+        String name;
 
+        // Name validation
+        while (true) {
+
+            System.out.print("Enter your name: ");
+            name = sc.nextLine().trim();
+
+            if (name.matches("[a-zA-Z ]+"))
+                break;
+
+            System.out.println("Invalid name! Please try again.");
+        }
+
+        // Age validation
         int age;
 
         while (true) {
@@ -46,11 +58,12 @@ public class ATM {
 
             } else {
 
-                System.out.println("Invalid age.");
+                System.out.println("Invalid age! Please try again.");
                 sc.nextLine();
             }
         }
 
+        // Designation
         String designation;
         double salary;
 
@@ -62,43 +75,57 @@ public class ATM {
 
             designation = sc.nextLine().trim();
 
-            if (designation.equalsIgnoreCase("Programmer")) {
+            if (designation.equals("Programmer")) {
 
                 designation = "Programmer";
                 salary = 20000;
 
-            } else if (designation.equalsIgnoreCase("Manager")) {
+            } else if (designation.equals("Manager")) {
 
                 designation = "Manager";
                 salary = 25000;
 
-            } else if (designation.equalsIgnoreCase("Tester")) {
+            } else if (designation.equals("Tester")) {
 
                 designation = "Tester";
                 salary = 15000;
 
             } else {
 
-                System.out.println("Invalid designation.");
+                System.out.println("Invalid designation! Please try again.");
                 continue;
             }
 
-            System.out.print("Do you want to re-enter designation? (y/n): ");
-            String choice = sc.nextLine().trim();
+            // Y/N for designation
+            while (true) {
 
-            if (choice.equalsIgnoreCase("n"))
-                break;
+                System.out.print(
+                    "Do you want to re-enter designation? (y/n): "
+                );
 
-            if (!choice.equalsIgnoreCase("y"))
+                String choice = sc.nextLine().trim();
+
+                if (choice.equalsIgnoreCase("y")) {
+                    break;
+                }
+
+                if (choice.equalsIgnoreCase("n")) {
+
+                    Account account =
+                        new Account(name, age, designation, salary);
+
+                    accounts.add(account);
+
+                    System.out.println(
+                        "\nAccount created successfully!\n"
+                    );
+
+                    return;
+                }
+
                 System.out.println("Please enter y or n.");
+            }
         }
-
-        Account account =
-                new Account(name, age, designation, salary);
-
-        accounts.add(account);
-
-        System.out.println("\nAccount created successfully!\n");
     }
 
     // 2. Display All Accounts
@@ -117,16 +144,21 @@ public class ATM {
             Account account = accounts.get(i);
 
             System.out.println("\n--- Account " + (i + 1) + " ---");
+
             System.out.println("Name       : " + account.name);
             System.out.println("Age        : " + account.age);
             System.out.println("Designation: " + account.designation);
-            System.out.printf("Salary     : %.2f%n", account.salary);
+
+            System.out.printf(
+                "Salary     : %.2f%n",
+                account.salary
+            );
         }
 
         System.out.println("------------------------\n");
     }
 
-    // 3. Raise Salary using Name
+    // 3. Raise Salary
     void raiseSalary() {
 
         if (accounts.isEmpty()) {
@@ -145,7 +177,7 @@ public class ATM {
 
         Account account = null;
 
-        // Search account by name
+        // Find account
         for (int i = 0; i < accounts.size(); i++) {
 
             if (accounts.get(i).name.equalsIgnoreCase(searchName)) {
@@ -161,6 +193,7 @@ public class ATM {
             return;
         }
 
+        // Percentage validation
         while (true) {
 
             System.out.print(
@@ -169,7 +202,10 @@ public class ATM {
 
             if (!sc.hasNextDouble()) {
 
-                System.out.println("Invalid percentage.");
+                System.out.println(
+                    "Invalid percentage! Please try again."
+                );
+
                 sc.nextLine();
                 continue;
             }
@@ -187,8 +223,8 @@ public class ATM {
             }
 
             double newSalary =
-                    account.salary +
-                    (account.salary * percent / 100);
+                account.salary +
+                (account.salary * percent / 100);
 
             System.out.printf(
                 "Old Salary: %.2f%n",
@@ -200,38 +236,41 @@ public class ATM {
                 newSalary
             );
 
-            System.out.print(
-                "Do you want to apply this salary increase? (y/n): "
-            );
+            // Y/N confirmation
+            while (true) {
 
-            String choice = sc.nextLine().trim();
-
-            if (choice.equalsIgnoreCase("y")) {
-
-                account.salary = newSalary;
-
-                System.out.println(
-                    "Salary increased successfully!\n"
+                System.out.print(
+                    "Do you want to apply this salary increase? (y/n): "
                 );
 
-                break;
+                String choice = sc.nextLine().trim();
 
-            } else if (choice.equalsIgnoreCase("n")) {
+                if (choice.equalsIgnoreCase("y")) {
 
-                System.out.println(
-                    "Salary increase cancelled.\n"
-                );
+                    account.salary = newSalary;
 
-                break;
+                    System.out.println(
+                        "Salary increased successfully!\n"
+                    );
 
-            } else {
+                    return;
+                }
+
+                if (choice.equalsIgnoreCase("n")) {
+
+                    System.out.println(
+                        "Salary increase cancelled.\n"
+                    );
+
+                    return;
+                }
 
                 System.out.println("Please enter y or n.");
             }
         }
     }
 
-    // Main Menu - ONLY 4 OPTIONS
+    // Main Menu
     public static void main(String[] args) {
 
         ATM atm = new ATM();
@@ -248,7 +287,7 @@ public class ATM {
 
             if (!atm.sc.hasNextInt()) {
 
-                System.out.println("Invalid input!\n");
+                System.out.println("Invalid input! Please try again.");
                 atm.sc.nextLine();
                 continue;
             }
@@ -280,7 +319,7 @@ public class ATM {
 
                 default:
                     System.out.println(
-                        "Please choose only options 1-4.\n"
+                        "Please choose only options 1-4."
                     );
             }
         }
