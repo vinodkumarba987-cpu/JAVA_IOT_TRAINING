@@ -22,12 +22,9 @@ public class ATM {
 
     ArrayList<Account> accounts = new ArrayList<>();
 
-    // 1. Create Account
     void createAccount() {
 
         String name;
-
-        // Name validation
         while (true) {
 
             System.out.print("Enter your name: ");
@@ -38,8 +35,6 @@ public class ATM {
 
             System.out.println("Invalid name! Please try again.");
         }
-
-        // Age validation
         int age;
 
         while (true) {
@@ -63,7 +58,6 @@ public class ATM {
             }
         }
 
-        // Designation
         String designation;
         double salary;
 
@@ -95,8 +89,6 @@ public class ATM {
                 System.out.println("Invalid designation! Please try again.");
                 continue;
             }
-
-            // Y/N for designation
             while (true) {
 
                 System.out.print(
@@ -127,8 +119,6 @@ public class ATM {
             }
         }
     }
-
-    // 2. Display All Accounts
     void displayAccounts() {
 
         if (accounts.isEmpty()) {
@@ -157,8 +147,6 @@ public class ATM {
 
         System.out.println("------------------------\n");
     }
-
-    // 3. Raise Salary
     void raiseSalary() {
 
         if (accounts.isEmpty()) {
@@ -176,8 +164,6 @@ public class ATM {
         String searchName = sc.nextLine().trim();
 
         Account account = null;
-
-        // Find account
         for (int i = 0; i < accounts.size(); i++) {
 
             if (accounts.get(i).name.equalsIgnoreCase(searchName)) {
@@ -192,8 +178,6 @@ public class ATM {
             System.out.println("Name not found.\n");
             return;
         }
-
-        // Percentage validation
         while (true) {
 
             System.out.print(
@@ -236,7 +220,6 @@ public class ATM {
                 newSalary
             );
 
-            // Y/N confirmation
             while (true) {
 
                 System.out.print(
@@ -269,8 +252,6 @@ public class ATM {
             }
         }
     }
-
-    // Main Menu
     public static void main(String[] args) {
 
         ATM atm = new ATM();
