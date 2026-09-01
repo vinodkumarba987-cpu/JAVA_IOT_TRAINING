@@ -1,8 +1,4 @@
 import java.util.PriorityQueue;
-
-/**
- * minHeap
- */
 public class minHeap {
 
     public static void main(String[] args) {
