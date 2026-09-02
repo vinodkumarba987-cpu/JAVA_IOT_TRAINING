@@ -10,7 +10,6 @@ public class fib_space_optimization {
             b = c;
         }
     }
-
     public static void main(String[] args) {
         new fib_space_optimization().fib(7);
     }
