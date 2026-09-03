@@ -8,7 +8,7 @@ public class SearchMatrix {
             {50, 55, 60, 70}
         };
 
-        int key = 37;
+        int key = 38;
         int i = 0, j = 2;
 
         while (i < 3 && j >= 0) {

@@ -1,12 +1,10 @@
 public class GridPath_minpath {
     public static void main(String[] args) {
-
         int[][] a = {
             {1, 3, 1},
             {1, 5, 1},
             {4, 2, 1}
         };
-
         for (int i = 1; i < 3; i++)
             a[i][0] += a[i - 1][0];
 
@@ -18,7 +16,6 @@ public class GridPath_minpath {
                 a[i][j] += Math.min(a[i - 1][j], a[i][j - 1]);
             }
         }
-
         System.out.println("Minimum Path Sum = " + a[2][2]);
     }
 }
