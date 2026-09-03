@@ -8,14 +8,10 @@ public class RabinKarp {
         int n = text.length();
 
         int ph = 0, th = 0;
-
-        // Hash of pattern and first window
         for (int i = 0; i < m; i++) {
             ph += pattern.charAt(i);
             th += text.charAt(i);
         }
-
-        // Check each window
         for (int i = 0; i <= n - m; i++) {
 
             if (ph == th) {
@@ -24,8 +20,6 @@ public class RabinKarp {
                     return;
                 }
             }
-
-            // Move window
             if (i < n - m)
                 th = th - text.charAt(i) + text.charAt(i + m);
         }
