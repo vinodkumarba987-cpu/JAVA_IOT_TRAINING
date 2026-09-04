@@ -6,7 +6,6 @@ public class even_test {
         int count = 0;
         for (int i = 0; i < num.length; i++) {
             if (num[i] % 2 == 0) {
-                // System.out.println("even : " + num[i]);
                 count++;
             }
         }
